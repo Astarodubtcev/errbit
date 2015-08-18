@@ -196,7 +196,7 @@ class Notice
   end
 
   def issue_creation
-    return true unless app.auto_issue_creation && problem.notices_count < 2
+    return true unless app.auto_issue_creation && problem.issue_link.nil?
     issue_creation = IssueCreation.new(problem, User.first, app.issue_tracker)
     issue_creation.execute
   end
